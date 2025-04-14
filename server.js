@@ -15,7 +15,8 @@ const app = express();
 
 
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: "https://skill-mate-frontend.vercel.app", credentials: true }));  // ✅ Allow cookies in frontend
+app.use(cors({ origin: "https://skill-mate-frontend.vercel.app", credentials: true }));
+// app.use(cors({ origin: "http://localhost:5173", credentials: true }));// ✅ Allow cookies in frontend
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -25,6 +26,9 @@ app.use('/api/v1/users', require('./routes/userRoute'));
 app.use('/api/v1/profile', require('./routes/profileRoutes'));
 app.use('/api/v1/opportunity', require('./routes/opportunityRoutes'));
 app.use('/api/v1/smartfilter', require('./routes/smartFilterRoutes'));
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
 
 
 
