@@ -21,7 +21,7 @@ const loginController = async (req, res) => {
             expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // Ensures secure transmission in production
-            sameSite: "strict",
+            sameSite: "none",
         });
 
         res.status(200).send({
@@ -48,7 +48,7 @@ const registerController = async (req, res) => {
             expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN*24*60*60*1000),
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // Ensures secure transmission in production
-            sameSite: "strict",
+            sameSite: "none",
         });
         res.status(201).json({
             success: true,
@@ -68,7 +68,7 @@ const logoutController = async (req, res) => {
         res.clearCookie("jwt", {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            sameSite: "none",
             path: "/"
         });
         res.json({ message: "Logged out successfully" });
