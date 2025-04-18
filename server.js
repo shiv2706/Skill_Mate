@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use('/api/v1/users', require('./routes/userRoute'));
 app.use('/api/v1/profile', require('./routes/profileRoutes'));
 app.use('/api/v1/opportunity', require('./routes/opportunityRoutes'));
-app.use('/api/v1/smartfilter', require('./routes/smartFilterRoutes'));
+app.use('/api/v1/smartfilter', require('./routes/smartFilterRoutes'))
 app.use('/api/v1/application', require('./routes/applicationRoutes'));
 app.get('/health', (req, res) => {
     res.status(200).send('OK');
