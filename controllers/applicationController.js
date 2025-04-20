@@ -48,6 +48,29 @@ const GetApplicationRequests = async (req, res) => {
     }
 }
 
+const GetMyApplications = async (req, res) => {
+    try{
+        const {applicantId} = req.body;
+        const application = await applicationsModel.find({applicantProfileId:applicantId})
+        // console.log(JSON.stringify(opportunity.data))
+
+        if (!application) {
+            return res.status(404).json({
+                success: false,
+                message: "applications not found"
+            });
+        }
+
+        return res.status(201).json({
+            success: true,
+            data:application
+        });
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
 const DeleteApplication = async (req, res) => {
     try{
         const {applicationId} = req.body;
@@ -60,4 +83,4 @@ const DeleteApplication = async (req, res) => {
 
 
 
-module.exports = {CreateApplication, GetApplicationRequests,DeleteApplication};
+module.exports = {CreateApplication, GetApplicationRequests,DeleteApplication, GetMyApplications};

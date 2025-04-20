@@ -1,6 +1,6 @@
 const express = require('express');
 const authMiddleware = require("../middleware/authMiddleware");
-const {CreateApplication, GetApplicationRequests, DeleteApplication} = require("../controllers/applicationController");
+const {CreateApplication, GetApplicationRequests, DeleteApplication, GetMyApplications} = require("../controllers/applicationController");
 
 
 const router = express.Router();
@@ -10,6 +10,8 @@ router.post('/create-application', authMiddleware,CreateApplication);
 router.post('/get-application-requests', authMiddleware,GetApplicationRequests);
 //reject-application
 router.post('/delete-application', authMiddleware, DeleteApplication);
+//get-my-applications
+router.post('/get-my-applications', authMiddleware, GetMyApplications);
 
 
 
