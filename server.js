@@ -16,7 +16,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "https://skill-mate-frontend.vercel.app", credentials: true }));
-// app.use(cors({ origin: "http://localhost:5173", credentials: true }));// ✅ Allow cookies in frontend
+
 
 app.use(express.json());
 app.use(morgan('dev'));
