@@ -81,6 +81,16 @@ const DeleteApplication = async (req, res) => {
     }
 }
 
+const WithdrawApplication = async (req, res) => {
+    try{
+        const {applicantId, jobTitle} = req.body;
+        await applicationsModel.findOneAndDelete({applicantProfileId:applicantId, appliedFor: jobTitle })
+        res.status(200).json("application deleted")
+    }catch(err){
+
+    }
+}
 
 
-module.exports = {CreateApplication, GetApplicationRequests,DeleteApplication, GetMyApplications};
+
+module.exports = {CreateApplication, GetApplicationRequests,DeleteApplication, GetMyApplications, WithdrawApplication};
