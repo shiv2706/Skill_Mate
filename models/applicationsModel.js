@@ -20,7 +20,11 @@ const applicationSchema = new mongoose.Schema({
     appliedFor:{
         type: String,
         required: [true, 'Please enter your title'],
-    }
+    },
+    applicationStatus:{
+        type: String,
+        default: 'Pending'
+    },
 
 
 },{timestamps:true});

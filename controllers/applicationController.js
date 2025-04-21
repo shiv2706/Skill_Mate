@@ -73,8 +73,8 @@ const GetMyApplications = async (req, res) => {
 
 const DeleteApplication = async (req, res) => {
     try{
-        const {applicationId} = req.body;
-        await applicationsModel.findOneAndDelete({_id:applicationId })
+        const {applicationId, statusChange} = req.body;
+        await applicationsModel.findOneAndUpdate({_id:applicationId },{applicationStatus:statusChange})
         res.status(200).json("application deleted")
     }catch(err){
 
