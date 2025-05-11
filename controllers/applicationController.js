@@ -4,14 +4,15 @@ const opportunityModel = require("../models/opportunityModel");
 
 const CreateApplication = async (req, res) => {
     try{
-        const {authorId, applicantName, applicantImage, applicantProfileId, appliedFor} = req.body;
+        const {authorId, applicantName, applicantImage, applicantProfileId, appliedFor,applicantEmail} = req.body;
         // Create a new application
         const newApplication = new applicationsModel({
             authorId,
             applicantName,
             applicantImage,
             applicantProfileId,
-            appliedFor
+            appliedFor,
+            applicantEmail
         });
         await newApplication.save();
 

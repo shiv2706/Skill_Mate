@@ -25,6 +25,10 @@ const applicationSchema = new mongoose.Schema({
         type: String,
         default: 'Pending'
     },
+    applicantEmail:{
+        type: String,
+        required: true,
+    },
 
 
 },{timestamps:true});
