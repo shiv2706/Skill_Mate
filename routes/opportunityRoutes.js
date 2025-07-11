@@ -1,12 +1,13 @@
 const express = require('express');
 const authMiddleware = require("../middleware/authMiddleware");
+const limiter = require("../middleware/limiter");
 const {CreateOpportunity, GetOpportunity, GetAllOpportunity, DeleteOpportunity, GetOpportunityDetails} = require("../controllers/opportunityController");
 
 console.log("🚀 Opportunity routes loaded");
 
 const router = express.Router();
 //add opportunity
-router.post('/create-opportunity', authMiddleware,CreateOpportunity);
+router.post('/create-opportunity', authMiddleware, limiter, CreateOpportunity);
 //get my opportunity postings
 router.post('/get-opportunity', authMiddleware,GetOpportunity);
 //get opportunity details
